@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop electronics, gaming, fashion, home essentials and more at Yahya Mart.">
+    <title>YAHYA MART | Everything You Love</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="top-strip">
+        Welcome to Yahya Mart — Your world of shopping!
+        <span>DEMO STORE · Sample prices in TZS</span>
+    </div>
+
+    <header class="site-header">
+        <a class="logo" href="#home">YAHYA<span>MART</span><small>EVERYTHING YOU LOVE</small></a>
+
+        <form class="search-box" id="searchForm">
+            <input id="searchInput" type="search" placeholder="Search phones, sneakers, controllers..." aria-label="Search products">
+            <button type="submit" aria-label="Search">⌕</button>
+        </form>
+
+        <div class="header-actions">
+            <button class="header-action" id="wishlistButton" type="button">
+                <span>♡</span><small>Wishlist <b id="wishlistCount">0</b></small>
+            </button>
+            <button class="header-action" id="cartButton" type="button">
+                <span>🛒</span><small>My Cart <b id="cartCount">0</b></small>
+            </button>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Shop All</a>
+        <a href="#deals">Special Offers</a>
+        <a href="#footer">Contact</a>
+        <span>🚚 Demo delivery across Tanzania</span>
+    </nav>
+
+    <main id="home">
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow">YOUR ONE-STOP ONLINE STORE</span>
+                <h1>Everything you love.<br><span>One shopping place.</span></h1>
+                <p>Explore electronics, gaming gear, fashion, home essentials and much more — all in one place.</p>
+                <a class="primary-button" href="#products">Explore Products <span>→</span></a>
+                <div class="hero-benefits">
+                    <span>✓ Great selection</span>
+                    <span>✓ Easy shopping</span>
+                    <span>✓ Tanzania-inspired demo</span>
+                </div>
+            </div>
+            <div class="hero-art">
+                <div class="hero-circle"></div>
+                <div class="floating-card card-one">🎧<span>Tech & Gaming</span></div>
+                <div class="floating-card card-two">👟<span>Fashion finds</span></div>
+                <div class="hero-emoji">🛍️</div>
+                <div class="hero-tag">YOUR NEXT<br>FAVOURITE FIND!</div>
+            </div>
+        </section>
+
+        <section class="trust-row">
+            <div><span>🚚</span><p><b>Delivery options</b><small>Demo checkout available</small></p></div>
+            <div><span>🔒</span><p><b>Safe demo shopping</b><small>No real payments taken</small></p></div>
+            <div><span>💬</span><p><b>Customer support</b><small>Contact details can be added</small></p></div>
+            <div><span>✨</span><p><b>Many categories</b><small>Explore something new</small></p></div>
+        </section>
+
+        <section class="section" id="categories">
+            <div class="section-heading">
+                <div><span class="eyebrow">FIND YOUR FAVOURITES</span><h2>Shop by category</h2></div>
+                <button class="text-button" id="allCategoriesButton" type="button">View all products →</button>
+            </div>
+            <div class="category-grid" id="categoryGrid"></div>
+        </section>
+
+        <section class="deal-banner" id="deals">
+            <div>
+                <span class="eyebrow">THE DEMO DEAL ZONE</span>
+                <h2>Good finds. Great style.<br>One place to explore.</h2>
+                <p>Discover selected sample products and test the shopping experience.</p>
+                <button class="light-button" id="dealsButton" type="button">Explore deals →</button>
+            </div>
+            <div class="deal-visual">🎁<span>JUST FOR YOU</span></div>
+        </section>
+
+        <section class="section" id="products">
+            <div class="section-heading">
+                <div><span class="eyebrow">OUR COLLECTION</span><h2 id="productHeading">Explore our products</h2><p class="muted" id="resultCount"></p></div>
+            </div>
+
+            <div class="shop-controls">
+                <div class="filter-tabs" id="filterTabs">
+                    <button class="filter-tab active" data-category="All" type="button">All products</button>
+                    <button class="filter-tab" data-category="Electronics" type="button">Electronics</button>
+                    <button class="filter-tab" data-category="Gaming" type="button">Gaming</button>
+                    <button class="filter-tab" data-category="Fashion" type="button">Fashion</button>
+                    <button class="filter-tab" data-category="Home" type="button">Home</button>
+                    <button class="filter-tab" data-category="Sports" type="button">Sports</button>
+                    <button class="filter-tab" data-category="Beauty" type="button">Beauty</button>
+                    <button class="filter-tab" data-category="School" type="button">School</button>
+                    <button class="filter-tab" data-category="Auto" type="button">Auto</button>
+                </div>
+
+                <div class="sort-control">
+                    <label for="sortSelect">Sort by</label>
+                    <select id="sortSelect">
+                        <option value="featured">Featured</option>
+                        <option value="low">Price: low to high</option>
+                        <option value="high">Price: high to low</option>
+                        <option value="rating">Top rated</option>
+                        <option value="name">Name: A–Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+            <div class="empty-state hidden" id="emptyState">
+                <span>🔎</span><h3>No products found</h3><p>Try another search or category.</p>
+                <button class="primary-button" id="resetFiltersButton" type="button">Show all products</button>
+            </div>
+            <button class="outline-button load-more-button" id="loadMoreButton" type="button">Show more products ↓</button>
+        </section>
+
+        <section class="newsletter">
+            <div><span class="eyebrow">STAY IN THE LOOP</span><h2>Get the latest finds.</h2><p>This is a demo newsletter form. No email will be sent.</p></div>
+            <form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Enter your email address" required><button type="submit">Join the list →</button></form>
+            <p class="newsletter-status" id="newsletterStatus" role="status"></p>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a class="logo" href="#home">YAHYA<span>MART</span><small>EVERYTHING YOU LOVE</small></a>
+                <p>A modern online shopping demo built with HTML, CSS and JavaScript.</p>
+            </div>
+            <div><h3>Shop</h3><a href="#products">All products</a><a href="#categories">Categories</a><a href="#deals">Special offers</a></div>
+            <div><h3>Customer care</h3><a href="#footer">Delivery information</a><a href="#footer">Returns policy</a><a href="#footer">Help centre</a></div>
+            <div><h3>About this store</h3><p>Yahya Mart is a learning project. Products, prices and ratings are samples, not live offers.</p></div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 YAHYA MART · Demo project</span><span>Made for learning with 💙</span></div>
+    </footer>
+
+    <!-- Shopping cart drawer -->
+    <div class="overlay" id="cartOverlay"></div>
+    <aside class="side-drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+        <div class="drawer-heading"><div><span class="eyebrow">YOUR SHOPPING</span><h2>My cart <span id="drawerCartCount">(0)</span></h2></div><button class="close-button" data-close="cart" type="button" aria-label="Close cart">×</button></div>
+        <div class="drawer-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="total-line"><span>Subtotal</span><strong id="cartSubtotal">TZS 0</strong></div>
+            <p class="muted">Delivery is estimated during demo checkout.</p>
+            <button class="primary-button full-button" id="checkoutButton" type="button">Proceed to checkout →</button>
+            <button class="outline-button full-button" id="continueShoppingButton" type="button">Continue shopping</button>
+        </div>
+    </aside>
+
+    <!-- Product details modal -->
+    <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-card product-modal-card">
+            <button class="close-button modal-close" data-close="product" type="button" aria-label="Close">×</button>
+            <div id="productModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Checkout modal -->
+    <div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+        <div class="modal-card checkout-card">
+            <button class="close-button modal-close" data-close="checkout" type="button" aria-label="Close">×</button>
+            <span class="eyebrow">DEMO ORDER</span>
+            <h2 id="checkoutTitle">Checkout</h2>
+            <p class="muted">Enter sample details to test the checkout flow. Do not enter sensitive or real payment information.</p>
+            <form id="checkoutForm">
+                <div class="form-row"><div class="form-group"><label for="customerName">Full name</label><input id="customerName" name="name" required minlength="2" placeholder="Your name"></div><div class="form-group"><label for="customerPhone">Phone number</label><input id="customerPhone" name="phone" type="tel" required placeholder="07XX XXX XXX"></div></div>
+                <div class="form-group"><label for="customerEmail">Email address</label><input id="customerEmail" name="email" type="email" required placeholder="you@example.com"></div>
+                <div class="form-row"><div class="form-group"><label for="customerRegion">Region</label><select id="customerRegion" name="region" required><option value="">Choose region</option><option>Dar es Salaam</option><option>Dodoma</option><option>Mbeya</option><option>Rukwa</option><option>Arusha</option><option>Mwanza</option><option>Morogoro</option><option>Iringa</option><option>Kilimanjaro</option><option>Other Tanzania region</option></select></div><div class="form-group"><label for="deliveryMethod">Delivery method</label><select id="deliveryMethod" name="delivery" required><option value="Standard delivery">Standard delivery</option><option value="Express delivery">Express delivery (demo)</option><option value="Pickup">Pickup (demo)</option></select></div></div>
+                <div class="form-group"><label for="deliveryAddress">Delivery address</label><textarea id="deliveryAddress" name="address" rows="3" required minlength="5" placeholder="Enter a sample delivery address"></textarea></div>
+                <div class="checkout-summary"><span>Order subtotal</span><strong id="checkoutSubtotal">TZS 0</strong></div>
+                <div class="demo-warning">🔒 Demo only: no payment is collected and no real order is sent.</div>
+                <button class="primary-button full-button" type="submit">Place demo order →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order confirmation -->
+    <div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+        <div class="modal-card success-card">
+            <div class="success-icon">✓</div><span class="eyebrow">DEMO COMPLETE</span>
+            <h2 id="successTitle">Order placed!</h2>
+            <p id="successMessage">Your sample order has been created in this browser.</p>
+            <div class="order-number" id="orderNumber"></div>
+            <button class="primary-button full-button" id="finishOrderButton" type="button">Back to store</button>
+        </div>
+    </div> 
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="stock-checkout.js"></script>
+</body>
+</html>

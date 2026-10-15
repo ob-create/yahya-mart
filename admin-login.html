@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | YAHYA MART</title>
+    <link rel="stylesheet" href="admin-login.css">
+    <script src="admin-login.js" defer></script>
+</head>
+<body>
+    <main class="login-page">
+        <a href="index.html" class="brand">YAHYA <span>MART.</span></a>
+
+        <section class="login-card">
+            <div class="lock-icon">🔐</div>
+            <p class="eyebrow">RESTRICTED AREA</p>
+            <h1>Admin Login</h1>
+            <p class="subtitle">Sign in to manage your store.</p>
+
+            <form id="loginForm">
+                <label for="adminPassword">Admin Password</label>
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+                <button type="submit" id="loginButton">Sign In</button>
+                <p id="loginMessage" role="status"></p>
+            </form>
+
+            <a href="index.html" class="back-link">← Back to Store</a>
+        </section>
+
+        <p class="footer-note">YAHYA MART · Admin demo</p>
+    </main>
+</body>
+</html>

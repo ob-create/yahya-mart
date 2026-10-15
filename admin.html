@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAHYA MART | Admin Dashboard</title><script>
+    if (sessionStorage.getItem("yahyaMartDemoAdminLoggedIn") !== "true") {
+        window.location.replace("admin-login.html");
+    }
+</script>
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+<body>
+
+    <header class="topbar">
+        <a href="index.html" class="brand">YAHYA <span>MART.</span></a>
+        <div class="topbar-right">
+    <span class="admin-label">Admin Dashboard</span>
+    <a href="index.html" class="store-link">View Store ↗</a>
+    <button type="button" id="logoutButton" class="logout-button">
+        Logout
+    </button>
+</div>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">STORE MANAGEMENT</p>
+                <h1>Dashboard</h1>
+                <p class="muted">Manage products and view demo orders.</p>
+            </div>
+            <span class="demo-badge">DEMO MODE</span>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span>Total Admin Products</span>
+                <strong id="totalProducts">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Total Demo Orders</span>
+                <strong id="totalOrders">0</strong>
+            </article>
+            <article class="stat-card">
+                <span>Pending Orders</span>
+                <strong id="pendingOrders">0</strong>
+            </article>
+        </section>
+
+        <section class="panel" id="productEditor">
+            <div class="panel-heading">
+                <div>
+                    <h2 id="formHeading">Add New Product</h2>
+                    <p class="muted">Choose a picture from your computer.</p>
+                </div>
+            </div>
+
+            <form id="productForm">
+                <input type="hidden" id="productId">
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="productName">Product Name *</label>
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="e.g. Wireless Controller"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="productCategory">Category *</label>
+                        <select id="productCategory" required>
+                            <option value="">Choose category</option>
+                            <option value="Phones">Phones</option>
+                            <option value="Computers">Computers</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Accessories">Accessories</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Home">Home</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="productPrice">Price (TZS) *</label>
+                        <input
+                            type="number"
+                            id="productPrice"
+                            placeholder="e.g. 85000"
+                            min="1"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="productImage">Product Picture</label>
+                        <input
+                            type="file"
+                            id="productImage"
+                            accept="image/jpeg,image/png,image/webp,image/gif"
+                        >
+                        <small>Choose an image from your computer. Maximum file size: 8 MB.</small>
+                    </div>
+                </div>
+
+                <div class="image-preview-box">
+                    <p>Image Preview</p>
+                    <img id="imagePreview" alt="Selected product preview" hidden>
+                    <span id="previewPlaceholder">No picture selected yet</span>
+                </div>
+
+                <p id="formMessage" class="form-message" role="status"></p>
+
+                <div class="form-actions">
+                    <button type="submit" class="primary-button" id="saveProduct">
+                        Add Product
+                    </button>
+                    <button type="button" class="secondary-button" id="cancelEdit" hidden>
+                        Cancel Edit
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Manage Products</h2>
+                    <p class="muted">Edit or delete products created in this dashboard.</p>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable">
+                        <tr>
+                            <td colspan="4" class="empty-message">Loading products...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Customer Orders</h2>
+                    <p class="muted">Demo orders saved by the store in this browser.</p>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderTable">
+                        <tr>
+                            <td colspan="4" class="empty-message">Loading orders...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="footer">
+            YAHYA MART Admin · Learning project · Demo only
+        </footer>
+    </main>
+<section class="stock-panel" id="stockPanel">
+    <h2>📦 Stock Management</h2>
+    <p>Manage the quantity of your store products.</p>
+
+    <div class="stock-summary">
+        <div class="stock-card">
+            <span>Total Products</span>
+            <strong id="stockTotal">0</strong>
+        </div>
+
+        <div class="stock-card">
+            <span>Low Stock</span>
+            <strong id="stockLow">0</strong>
+        </div>
+
+        <div class="stock-card">
+            <span>Out of Stock</span>
+            <strong id="stockOut">0</strong>
+        </div>
+    </div>
+
+    <div class="stock-table-wrap">
+        <table class="stock-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price (TZS)</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="stockTableBody"></tbody>
+        </table>
+    </div>
+
+    <p id="stockMessage" role="status"></p>
+</section>
+
+<script src="stock.js" defer></script>
+</body>
+</html>

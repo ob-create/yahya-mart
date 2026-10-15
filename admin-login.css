@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b1220;
+    color: #172033;
+}
+
+.login-page {
+    min-height: 100vh;
+    padding: 30px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand {
+    margin-bottom: 28px;
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+
+.brand span {
+    color: #45d6ff;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.lock-icon {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    background: #e8f3ff;
+    font-size: 28px;
+}
+
+.eyebrow {
+    margin: 0 0 9px;
+    color: #075ee8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+h1 {
+    margin: 0 0 9px;
+    font-size: 29px;
+}
+
+.subtitle {
+    margin: 0 0 27px;
+    color: #687386;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    border: 1px solid #d6deea;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #075ee8;
+    box-shadow: 0 0 0 3px rgba(7, 94, 232, 0.1);
+}
+
+button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 17px;
+    border: 0;
+    border-radius: 9px;
+    background: #075ee8;
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0649b5;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+#loginMessage {
+    min-height: 18px;
+    margin: 13px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #bd2334;
+}
+
+.back-link {
+    display: block;
+    margin-top: 17px;
+    text-align: center;
+    color: #47566e;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: #075ee8;
+}
+
+.footer-note {
+    margin-top: 24px;
+    color: #9aa8bd;
+    font-size: 12px;
+}
+
+@media (max-width: 450px) {
+    .login-card {
+        padding: 25px 21px;
+    }
+}
